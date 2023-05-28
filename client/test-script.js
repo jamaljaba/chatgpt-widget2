@@ -72,17 +72,17 @@ const handleSubmit = async (e) => {
   const data = new FormData(form)
 
   // user's chatstripe
-  chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
+  this.chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
 
   // to clear the textarea input 
-  form.reset()
+  this.form.reset()
 
   // bot's chatstripe
   const uniqueId = generateUniqueId()
-  chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
+  this.chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
 
   // to focus scroll to the bottom 
-  chatContainer.scrollTop = chatContainer.scrollHeight;
+  this.chatContainer.scrollTop = this.chatContainer.scrollHeight;
 
   // specific message div 
   const messageDiv = document.getElementById(uniqueId)
@@ -135,8 +135,8 @@ const handleSubmit = async (e) => {
 }
 
 
-form.addEventListener('submit', handleSubmit)
-form.addEventListener('keyup', (e) => {
+this.form.addEventListener('submit', handleSubmit)
+this.form.addEventListener('keyup', (e) => {
     if (e.keyCode === 13) {
         handleSubmit(e)
     }
